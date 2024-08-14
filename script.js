@@ -77,3 +77,25 @@ function updateIntakeChart() {
         }
     });
 }
+function updateWorkoutChart() {
+    let cardio = workoutLog.filter(item => item.type === 'Cardio').reduce((sum, item) => sum + item.duration, 0);
+    let strength = workoutLog.filter(item => item.type === 'Strength').reduce((sum, item) => sum + item.duration, 0);
+    let flexibility = workoutLog.filter(item => item.type === 'Flexibility').reduce((sum, item) => sum + item.duration, 0);
+    let endurance = workoutLog.filter(item => item.type === 'Endurance').reduce((sum, item) => sum + item.duration, 0);
+
+    let ctx = document.getElementById('workoutChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Cardio', 'Strength', 'Flexibility', 'Endurance'],
+            datasets: [{
+                data: [cardio, strength, flexibility, endurance],
+                backgroundColor: ['#0074D9', '#7FDBFF', '#39CCCC', '#001f3f']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
