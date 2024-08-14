@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #e0f7fa;
     color: #333;
     margin: 0;
     padding: 0;
@@ -12,37 +12,51 @@ body {
 
 .container {
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 80%;
-    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
-h1, h2 {
-    color: #001f3f;
-}
-.input-section, .log-section, .chart-section {
+h1 {
+    color: #00796b;
+    font-size: 2.5em;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #004d40;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.input-section, .log-section, .chart-section {
+    margin-bottom: 30px;
 }
 
 input, select, button {
     width: calc(100% - 20px);
-    margin: 5px 0;
-    padding: 10px;
+    margin: 10px 0;
+    padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
 button {
-    background-color: #0074D9;
+    background-color: #00796b;
     color: white;
     cursor: pointer;
     border: none;
+    transition: background-color 0.3s ease;
 }
+
 button:hover {
-    background-color: #0052a3;
+    background-color: #004d40;
 }
 
 ul {
@@ -51,19 +65,39 @@ ul {
 }
 
 ul li {
-    background-color: #f8f8f8;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #e0f2f1;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chart-section {
-    background-color: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
+    background-color: #e0f2f1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#intakeChart, #workoutChart {
+#intakeChart, #workoutChart, #waterChart, #sleepChart {
     max-width: 100%;
     height: auto;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00796b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #004d40;
 }
