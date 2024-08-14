@@ -53,6 +53,53 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="input-section">
+        <h2>Set Daily Goals</h2>
+        <input type="number" id="goal-calories" placeholder="Calories Goal">
+        <input type="number" id="goal-fats" placeholder="Fats Goal (g)">
+        <input type="number" id="goal-protein" placeholder="Protein Goal (g)">
+        <input type="number" id="goal-carbs" placeholder="Carbs Goal (g)">
+        <button onclick="setGoals()">Set Goals</button>
+    </div>
+
+    <div class="log-section">
+        <h2>Daily Goals</h2>
+        <ul id="goals-log"></ul>
+    </div>
+
+    <div class="input-section">
+        <h2>Track Water Intake</h2>
+        <input type="number" id="water-intake" placeholder="Water Intake (ml)">
+        <button onclick="addWaterIntake()">Add Water</button>
+    </div>
+
+    <div class="log-section">
+        <h2>Water Intake Log</h2>
+        <ul id="water-log"></ul>
+    </div>
+
+    <div class="chart-section">
+        <h2>Water Intake Overview</h2>
+        <canvas id="waterChart"></canvas>
+    </div>
+
+    <div class="input-section">
+        <h2>Track Sleep</h2>
+        <input type="number" id="sleep-hours" placeholder="Sleep Hours">
+        <button onclick="addSleep()">Add Sleep</button>
+    </div>
+
+    <div class="log-section">
+        <h2>Sleep Log</h2>
+        <ul id="sleep-log"></ul>
+    </div>
+
+    <div class="chart-section">
+        <h2>Sleep Overview</h2>
+        <canvas id="sleepChart"></canvas>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
