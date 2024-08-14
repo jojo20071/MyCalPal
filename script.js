@@ -29,3 +29,51 @@ function updateFoodLog() {
         foodLogElement.appendChild(listItem);
     });
 }
+
+function addWorkout() {
+    let workoutType = document.getElementById('workout-type').value;
+    let workoutDuration = document.getElementById('workout-duration').value;
+    
+    if (workoutType && workoutDuration) {
+        let workoutItem = {
+            type: workoutType,
+            duration: parseFloat(workoutDuration)
+        };
+        workoutLog.push(workoutItem);
+        updateWorkoutLog();
+        updateWorkoutChart();
+    }
+}
+
+function updateWorkoutLog() {
+    let workoutLogElement = document.getElementById('workout-log');
+    workoutLogElement.innerHTML = '';
+    workoutLog.forEach((item, index) => {
+        let listItem = document.createElement('li');
+        listItem.innerText = `Type: ${item.type}, Duration: ${item.duration} minutes`;
+        workoutLogElement.appendChild(listItem);
+    });
+}
+
+function updateIntakeChart() {
+    let totalCalories = foodLog.reduce((sum, item) => sum + item.calories, 0);
+    let totalFats = foodLog.reduce((sum, item) => sum + item.fats, 0);
+    let totalProtein = foodLog.reduce((sum, item) => sum + item.protein, 0);
+    let totalCarbs = foodLog.reduce((sum, item) => sum + item.carbs, 0);
+
+    let ctx = document.getElementById('intakeChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Calories', 'Fats', 'Protein', 'Carbs'],
+            datasets: [{
+                data: [totalCalories, totalFats, totalProtein, totalCarbs],
+                backgroundColor: ['#0074D9', '#7FDBFF', '#39CCCC', '#001f3f']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
