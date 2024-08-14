@@ -19,6 +19,7 @@
             <input type="number" id="carbs" placeholder="Carbs (g)">
             <button onclick="addFood()">Add Food</button>
         </div>
+
         <div class="log-section">
             <h2>Food Log</h2>
             <ul id="food-log"></ul>
@@ -35,6 +36,7 @@
             <input type="number" id="workout-duration" placeholder="Duration (minutes)">
             <button onclick="addWorkout()">Add Workout</button>
         </div>
+
         <div class="log-section">
             <h2>Workout Log</h2>
             <ul id="workout-log"></ul>
@@ -45,7 +47,11 @@
             <canvas id="intakeChart"></canvas>
         </div>
 
-
+        <div class="chart-section">
+            <h2>Workout Overview</h2>
+            <canvas id="workoutChart"></canvas>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

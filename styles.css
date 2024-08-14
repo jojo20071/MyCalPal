@@ -41,3 +41,29 @@ button {
     cursor: pointer;
     border: none;
 }
+button:hover {
+    background-color: #0052a3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f8f8f8;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chart-section {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#intakeChart, #workoutChart {
+    max-width: 100%;
+    height: auto;
+}
