@@ -22,3 +22,22 @@ body {
 h1, h2 {
     color: #001f3f;
 }
+.input-section, .log-section, .chart-section {
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    width: calc(100% - 20px);
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #0074D9;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
