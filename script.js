@@ -1,5 +1,13 @@
 let foodLog = [];
 let workoutLog = [];
+let waterLog = [];
+let sleepLog = [];
+let goals = {
+    calories: 0,
+    fats: 0,
+    protein: 0,
+    carbs: 0
+};
 
 function addFood() {
     let calories = document.getElementById('calories').value;
@@ -17,6 +25,7 @@ function addFood() {
         foodLog.push(foodItem);
         updateFoodLog();
         updateIntakeChart();
+        updateGoalsLog();
     }
 }
 
@@ -55,6 +64,66 @@ function updateWorkoutLog() {
     });
 }
 
+function addWaterIntake() {
+    let waterIntake = document.getElementById('water-intake').value;
+    
+    if (waterIntake) {
+        waterLog.push(parseFloat(waterIntake));
+        updateWaterLog();
+        updateWaterChart();
+    }
+}
+
+function updateWaterLog() {
+    let waterLogElement = document.getElementById('water-log');
+    waterLogElement.innerHTML = '';
+    waterLog.forEach((item, index) => {
+        let listItem = document.createElement('li');
+        listItem.innerText = `Water Intake: ${item} ml`;
+        waterLogElement.appendChild(listItem);
+    });
+}
+
+function addSleep() {
+    let sleepHours = document.getElementById('sleep-hours').value;
+    
+    if (sleepHours) {
+        sleepLog.push(parseFloat(sleepHours));
+        updateSleepLog();
+        updateSleepChart();
+    }
+}
+
+function updateSleepLog() {
+    let sleepLogElement = document.getElementById('sleep-log');
+    sleepLogElement.innerHTML = '';
+    sleepLog.forEach((item, index) => {
+        let listItem = document.createElement('li');
+        listItem.innerText = `Sleep: ${item} hours`;
+        sleepLogElement.appendChild(listItem);
+    });
+}
+
+function setGoals() {
+    goals.calories = parseFloat(document.getElementById('goal-calories').value);
+    goals.fats = parseFloat(document.getElementById('goal-fats').value);
+    goals.protein = parseFloat(document.getElementById('goal-protein').value);
+    goals.carbs = parseFloat(document.getElementById('goal-carbs').value);
+    updateGoalsLog();
+}
+
+function updateGoalsLog() {
+    let goalsLogElement = document.getElementById('goals-log');
+    goalsLogElement.innerHTML = '';
+    let totalCalories = foodLog.reduce((sum, item) => sum + item.calories, 0);
+    let totalFats = foodLog.reduce((sum, item) => sum + item.fats, 0);
+    let totalProtein = foodLog.reduce((sum, item) => sum + item.protein, 0);
+    let totalCarbs = foodLog.reduce((sum, item) => sum + item.carbs, 0);
+    let listItem = document.createElement('li');
+    listItem.innerText = `Calories: ${totalCalories}/${goals.calories}, Fats: ${totalFats}/${goals.fats}g, Protein: ${totalProtein}/${goals.protein}g, Carbs: ${totalCarbs}/${goals.carbs}g`;
+    goalsLogElement.appendChild(listItem);
+}
+
 function updateIntakeChart() {
     let totalCalories = foodLog.reduce((sum, item) => sum + item.calories, 0);
     let totalFats = foodLog.reduce((sum, item) => sum + item.fats, 0);
@@ -77,6 +146,7 @@ function updateIntakeChart() {
         }
     });
 }
+
 function updateWorkoutChart() {
     let cardio = workoutLog.filter(item => item.type === 'Cardio').reduce((sum, item) => sum + item.duration, 0);
     let strength = workoutLog.filter(item => item.type === 'Strength').reduce((sum, item) => sum + item.duration, 0);
@@ -96,6 +166,54 @@ function updateWorkoutChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false
+        }
+    });
+}
+
+function updateWaterChart() {
+    let totalWater = waterLog.reduce((sum, item) => sum + item, 0);
+
+    let ctx = document.getElementById('waterChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: waterLog.map((_, index) => `Entry ${index + 1}`),
+            datasets: [{
+                data: waterLog,
+                backgroundColor: '#0074D9',
+                borderColor: '#0074D9',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+}
+
+function updateSleepChart() {
+    let totalSleep = sleepLog.reduce((sum, item) => sum + item, 0);
+    let averageSleep = totalSleep / sleepLog.length;
+
+    let ctx = document.getElementById('sleepChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: sleepLog.map((_, index) => `Day ${index + 1}`),
+            datasets: [{
+                data: sleepLog,
+                backgroundColor: '#7FDBFF'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 }
