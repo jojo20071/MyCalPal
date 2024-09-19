@@ -1,6 +1,9 @@
 # CalPal
 
 ## Overview
+![image](https://github.com/user-attachments/assets/815b95f9-1bce-4234-9419-26b9517431a1)
+
+link: https://my-cal-pal.vercel.app/
 
 CalPal is a comprehensive, web-based health and fitness tracking application designed to help users manage their diet, workouts, water intake, and sleep patterns. The application allows users to set and track personal health goals, while also providing insightful visualizations through interactive charts. Whether you're looking to monitor your daily caloric intake, log your exercise routines, or ensure you're staying hydrated, CalPal offers the tools you need to stay on top of your health journey.
 
